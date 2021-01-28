@@ -70,8 +70,32 @@ nav a:hover {
 }
 
 #banner {
+    position: relative;
+}
+
+#banner-img {
     width: 100%;
-    max-width: 1200px;
+    height: auto;
+}
+
+#welcome {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 560px;
+    height: 100%;
+    background-color: #ffffff;
+    opacity: 0.90;
+    overflow: auto;
+}
+
+#welcome h2 {
+    padding: 64px 0 40px 0;
+}
+
+#welcome p {
+    padding: 12px 24px;
 }
 
 #directory {
@@ -95,12 +119,6 @@ nav a:hover {
 
 #directory p {
     text-align: left;
-}
-
-@media (max-width: 766px) {
-    #directory {
-        grid-template-columns: auto;
-    }
 }
 
 #info {
@@ -156,4 +174,18 @@ nav a:hover {
     padding: 20px 0px 20px 0px;
     background-color: #404040;
     color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    #welcome {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+        border-bottom: 1px solid #f2f2f2;
+    }
+    #directory {
+        grid-template-columns: auto;
+    }
 }
