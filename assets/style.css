@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#main {
+    background-color: #ffe6cb;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+}
+
+.content {
+    margin: auto auto;
+    width: 95%;
+    max-width: 1200px;
+    text-align: center;
+    background-color: #ffffff;
+    color: #404040;
+}
+
+#title {
+    padding: 40px;
+    background-color: #ffffff;
+}
+
+#title h1 {
+    padding: 10px;
+    font-size: 30pt;
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+}
+
+a:visited {
+    color: none;
+}
+
+#title p {
+    font-size: 10pt;
+}
+
+nav {
+    padding: 20px;
+    background-color: #ff3e67;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+nav span {
+    padding: 15px;
+}
+
+
+nav a:hover {
+    color: #ffffff;
+}
+
+#banner {
+    width: 100%;
+    max-width: 1200px;
+}
+
+#directory table {
+    padding-top: 20px;
+    padding-bottom: 60px;
+    width: 100%;
+    column-width: 330px;
+}
+
+#d-headings th, td {
+    padding: 10px 20px 10px 20px;
+}
+
+#d-thumbnails {
+    vertical-align: top;
+}
+
+#d-thumbnails img {
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+#d-thumbnails p {
+    font-size: 14px;
+    line-height: 25px;
+    text-align: left;
+}
+
+#d-thumbnails a {
+    color: #ff0031;
+}
+
+#d-thumbnails a:hover {
+    color: #acacac;
+}
+
+#info {
+    padding: 40px 0 40px 0;
+    text-align: left;
+}
+
+#info h2 {
+    padding: 0 0 20px 10%;
+    font-weight: normal;
+}
+
+#info p {
+    padding: 0 10%;
+    max-width: 800px;
+    font-size: 11pt;
+    line-height: 20px;
+}
+
+#info img {
+    padding-left: 10%;
+    max-width: 80%;
+    height: auto;
+}
+
+#credentials {
+    font-style: italic;
+}
+
+#info a {
+    color: #ff0031;
+}
+
+#info a:hover {
+    color: #acacac;
+}
+
+#follow {
+    padding: 20px 0 0 10%;
+    font-size: 11pt;
+}
+
+#email-field {
+    padding: 5px;
+    max-width: 400px;
+    width: 80%;
+}
+
+#follow-button {
+    width: 90px;
+    height: 40px;
+    background-color: #ff96a6;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+#follow-button:hover {
+    background-color: #ffa5b3;
+}
+
+#footer {
+    padding: 20px 0px 20px 0px;
+    background-color: #404040;
+    color: #ffffff;
+}
