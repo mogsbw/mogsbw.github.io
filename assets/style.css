@@ -3,9 +3,23 @@
     padding: 0;
 }
 
-#main {
+body {
     background-color: #ffe6cb;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+main {
+    color: #404040;
+    font-size: 11pt;
+    line-height: 24px;
+}
+
+main a {
+    color: #ff0031;
+}
+
+main a:hover {
+    color: #acacac;
 }
 
 .content {
@@ -14,7 +28,6 @@
     max-width: 1200px;
     text-align: center;
     background-color: #ffffff;
-    color: #404040;
 }
 
 #title {
@@ -61,38 +74,33 @@ nav a:hover {
     max-width: 1200px;
 }
 
-#directory table {
-    padding-top: 20px;
-    padding-bottom: 60px;
-    width: 100%;
-    column-width: 330px;
+#directory {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 5%;
+    box-sizing: border-box;
+    padding: 20px 4% 64px 4%;
 }
 
-#d-headings th, td {
-    padding: 10px 20px 10px 20px;
+#directory h2 {
+    padding: 20px 0;
+    font-weight: normal;
+    font-size: 14pt;
 }
 
-#d-thumbnails {
-    vertical-align: top;
-}
-
-#d-thumbnails img {
+#directory img {
     padding-bottom: 20px;
-    width: 100%;
+    max-width: 100%;
 }
 
-#d-thumbnails p {
-    font-size: 14px;
-    line-height: 25px;
+#directory p {
     text-align: left;
 }
 
-#d-thumbnails a {
-    color: #ff0031;
-}
-
-#d-thumbnails a:hover {
-    color: #acacac;
+@media (max-width: 766px) {
+    #directory {
+        grid-template-columns: auto;
+    }
 }
 
 #info {
@@ -108,8 +116,6 @@ nav a:hover {
 #info p {
     padding: 0 10%;
     max-width: 800px;
-    font-size: 11pt;
-    line-height: 20px;
 }
 
 #info img {
@@ -120,14 +126,6 @@ nav a:hover {
 
 #credentials {
     font-style: italic;
-}
-
-#info a {
-    color: #ff0031;
-}
-
-#info a:hover {
-    color: #acacac;
 }
 
 #follow {
