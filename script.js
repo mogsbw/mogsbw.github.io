@@ -33,6 +33,7 @@ function initBoard() {
                 formatBox.className = "format-box"; // formatting boxes
                 row.appendChild(formatBox);
                 if (j == 2 || j == 7) {
+                    formatBox.className = "dot-box";
                     formatBox.textContent = ".";
                 } else if (j == 4) {
                     formatBox.textContent = "/";
@@ -168,43 +169,55 @@ function checkGuess () {
         guessString += val;
     }
 
-    // console.log(guessString);
-    // console.log(currentGuess);
-
     if (guessString.length != 10) {
-        alert("Not enough letters!");
+        alert("Not enough numbers!");
         return;
     }
+
 
     for (let i = 0; i < 13; i++) {
     
         if (!FORMAT_INDICES.includes(i)) {
-            let numColour = ''
+            let numColour = "";
             let box = row.children[i];
             let num = currentGuess[guessIndex];
+            let guessFreq = 0;
+            let rightFreq = 0;
 
             let numPosition = rightGuess.indexOf(currentGuess[guessIndex]);
             // console.log(i, numPosition, currentGuess);
             // console.log(currentGuess[guessIndex], rightGuess[guessIndex]);
+
+            for (let c = 0; c < 8; c++) {
+                if (currentGuess[c] === num) {
+                    guessFreq++;
+                }
+                if (rightGuessString[c] === num) {
+                    rightFreq++;
+                }
+            }
+
             if (numPosition === -1) {
-                numColour = 'grey';
+                numColour = "grey";
                 rightGuess[numPosition] = "#";
             } else {
-                if (currentGuess[guessIndex] === rightGuess[guessIndex]) {
-                    numColour = 'green'
+                if (currentGuess[guessIndex] === rightGuessString[guessIndex]) {
+                    numColour = "#50b464" // green
                     rightGuess[numPosition] = "#";
-                } else if (currentGuess[numPosition] === rightGuess[numPosition]) {
-                    numColour = 'grey';
                 } else {
-                    numColour = 'yellow'
-                    rightGuess[numPosition] = "#";
+                    if (currentGuess[numPosition] === rightGuess[numPosition] && guessFreq > rightFreq) {
+                        numColour = "grey";
+                    } else {
+                        numColour = "#dcc85a" // yellow
+                        rightGuess[numPosition] = "#";
+                    }
                 }
                    
             }
             let delay = 250 * guessIndex;
             setTimeout(()=> {
-                //shade box
                 box.style.backgroundColor = numColour;
+                box.style.color = "#ffffff";
                 shadeKeyBoard(num, numColour);
             }, delay)
             currentGuess[guessIndex] = "#" // current guess letter has been accounted
@@ -213,17 +226,21 @@ function checkGuess () {
         
     }
     console.log(guessString, rightGuessString);
-    setTimeout(afterCheck, 2500, guessString);
+    setTimeout(afterCheck, 2250, guessString);
+}
+
+function count(val) {
+    
 }
 
 function shadeKeyBoard(num, colour) {
     for (const elem of document.getElementsByClassName("keyboard-button")) {
         if (elem.textContent === num) {
             let oldColour = elem.style.backgroundColor
-            if (oldColour === 'green') {
+            if (oldColour === '#50b464') {
                 return;
             } 
-            if (oldColour === 'yellow' && colour !== 'green') {
+            if (oldColour === '#dcc85a' && colour !== '#50b464') {
                 return;
             }
             elem.style.backgroundColor = colour;
@@ -243,7 +260,7 @@ function afterCheck(guess) {
         nextNum = 0;
         if (remainingGuesses === 0) {
             alert("You've run out of guesses! Game over!")
-            alert(`The right word was: "${rightGuessString}"`)
+            alert(`The right prescription was: "${rightGuessString}"`)
         }
     }
 }

@@ -1,5 +1,11 @@
+* {
+    font-family: Tahoma, Helvetica, sans-serif;
+    font-weight: 500;
+}
+
 h1 {
     text-align: center;
+    font-size: 32pt;
 }
 
 #game-board {
@@ -12,8 +18,7 @@ h1 {
     border: 2px solid gray;
     border-radius: 3px;
     margin: 2px;
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 26pt;
     height: 3rem;
     width: 3rem;
     display: flex;
@@ -26,8 +31,7 @@ h1 {
     border: 2px solid gray;
     border-radius: 3px;
     margin: 2px;
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 26pt;
     height: 3rem;
     width: 4.5rem;
     display: flex;
@@ -40,10 +44,22 @@ h1 {
     border: none;
     border-radius: 3px;
     margin: 2px;
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 26pt;
     height: 3rem;
     width: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: lowercase;
+}
+
+.dot-box {
+    border: none;
+    border-radius: 3px;
+    margin: 2px;
+    font-size: 26pt;
+    height: 3rem;
+    width: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,9 +90,11 @@ h1 {
 }
 
 .keyboard-button {
+    border: none;
+    border-radius: 3px;
     font-size: 1rem;
     font-weight: 700;
-    padding: 0.5rem;
+    padding: 1rem;
     margin: 0 2px;
     cursor: pointer;
     text-transform: uppercase;
