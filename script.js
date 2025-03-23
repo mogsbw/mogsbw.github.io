@@ -192,11 +192,12 @@ function checkGuess () {
                 if (currentGuess[c] === num) {
                     guessFreq++;
                 }
-                if (rightGuessString[c] === num) {
+                if (rightGuess[c] === num) {
                     rightFreq++;
                 }
             }
-
+            console.log(rightGuess)
+            console.log(guessFreq, rightFreq);
             if (numPosition === -1) {
                 numColour = "grey";
                 rightGuess[numPosition] = "#";
@@ -237,13 +238,17 @@ function shadeKeyBoard(num, colour) {
     for (const elem of document.getElementsByClassName("keyboard-button")) {
         if (elem.textContent === num) {
             let oldColour = elem.style.backgroundColor
-            if (oldColour === '#50b464') {
+            if (oldColour === 'rgb(220, 200, 90)') {
                 return;
-            } 
-            if (oldColour === '#dcc85a' && colour !== '#50b464') {
-                return;
+            } else if (oldColour === 'rgb(80, 180, 100)') {
+                if (colour === "#dcc85a") {
+                    elem.style.backgroundColor = colour;
+                } else {
+                    return;
+                }
+            } else {
+                elem.style.backgroundColor = colour;
             }
-            elem.style.backgroundColor = colour;
             break;
         }
     }
