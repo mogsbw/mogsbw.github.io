@@ -183,6 +183,7 @@ function checkGuess () {
             let num = currentGuess[guessIndex];
             let guessFreq = 0;
             let rightFreq = 0;
+            let anyLeft = true;
 
             let numPosition = rightGuess.indexOf(currentGuess[guessIndex]);
             // console.log(i, numPosition, currentGuess);
@@ -205,6 +206,9 @@ function checkGuess () {
                 if (currentGuess[guessIndex] === rightGuessString[guessIndex]) {
                     numColour = "#50b464" // green
                     rightGuess[numPosition] = "#";
+                    if (rightGuess.indexOf(currentGuess[guessIndex] === -1)) {
+                        anyLeft = false;
+                    }
                 } else {
                     if (currentGuess[numPosition] === rightGuess[numPosition] && guessFreq > rightFreq) {
                         numColour = "grey";
@@ -219,7 +223,7 @@ function checkGuess () {
             setTimeout(()=> {
                 box.style.backgroundColor = numColour;
                 box.style.color = "#ffffff";
-                shadeKeyBoard(num, numColour);
+                shadeKeyBoard(num, numColour, anyLeft);
             }, delay)
             currentGuess[guessIndex] = "#" // current guess letter has been accounted
             guessIndex++;
@@ -234,11 +238,11 @@ function count(val) {
     
 }
 
-function shadeKeyBoard(num, colour) {
+function shadeKeyBoard(num, colour, remaining) {
     for (const elem of document.getElementsByClassName("keyboard-button")) {
         if (elem.textContent === num) {
             let oldColour = elem.style.backgroundColor
-            if (oldColour === 'rgb(220, 200, 90)') {
+            if (oldColour === 'rgb(220, 200, 90)' && remaining) {
                 return;
             } else if (oldColour === 'rgb(80, 180, 100)') {
                 if (colour === "#dcc85a") {
