@@ -53,17 +53,14 @@ h1 {
     text-transform: lowercase;
 }
 
-.dot-box {
-    border: none;
-    border-radius: 3px;
-    margin: 2px;
-    font-size: 1.5rem;
-    height: 3rem;
+#dot-box {
     width: 0.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: lowercase;
+}
+
+#slash-box {
+    font-size: 3rem;
+    font-weight: 250;
+    width: 1.5rem;
 }
 
 .filled-box {
@@ -126,12 +123,14 @@ h1 {
         width: 0.75rem;
     }
     
-    .dot-box {
-        border: none;
-        margin: 1px;
-        font-size: 1rem;
-        height: 1.75rem;
+    #dot-box {
         width: 0.5rem;
+    }
+
+    #slash-box {
+        font-size: 1.75rem;
+        font-weight: 200;
+        width: 1rem;
     }
 
     .keyboard-button {
@@ -169,12 +168,14 @@ h1 {
         width: 0.5rem;
     }
     
-    .dot-box {
-        border: none;
-        margin: 1px;
-        font-size: 0.9rem;
-        height: 1.5rem;
+    #dot-box {
         width: 0.25rem;
+    }
+
+    #slash-box {
+        font-size: 1.5rem;
+        font-weight: 200;
+        width: 0.75rem;
     }
 
     .keyboard-button {

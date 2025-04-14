@@ -3,7 +3,7 @@ import { PRESCRIPTIONS } from "./prescriptions.js";
 const NUM_GUESSES = 6;
 
 const FORMAT_INDICES = [2, 4, 5, 7, 9];
-const SIGNS = ["-", "+"];
+const SIGNS = ["–", "+"];
 const STEPS = ["00", "25", "50", "75"];
 const FIRST_AXIS = ["0", "1"];
 let remainingGuesses = NUM_GUESSES;
@@ -33,12 +33,13 @@ function initBoard() {
                 formatBox.className = "format-box"; // formatting boxes
                 row.appendChild(formatBox);
                 if (j == 2 || j == 7) {
-                    formatBox.className = "dot-box";
+                    formatBox.id = "dot-box";
                     formatBox.textContent = ".";
                 } else if (j == 4) {
+                    formatBox.id = "slash-box"
                     formatBox.textContent = "/";
                 } else if (j == 5) {
-                    formatBox.textContent = "-";
+                    formatBox.textContent = "–";
                 } else if (j == 9) {
                     formatBox.textContent = "x";
                 }
@@ -83,7 +84,7 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
     }
 
     // console.log(key.match(/[0-9+\-]/g))
-    if (STEPS.includes(key) || key.match(/[0-9+\-]/g)) {
+    if (STEPS.includes(key) || key.match(/[0-9+\–]/g)) {
         insertNum(key);
     }
 
