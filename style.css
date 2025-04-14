@@ -1,11 +1,11 @@
 * {
-    font-family: Tahoma, Helvetica, sans-serif;
+    font-family: Futura, Tahoma, Helvetica, sans-serif;
     font-weight: 500;
 }
 
 h1 {
     text-align: center;
-    font-size: 32pt;
+    font-size: 2rem;
 }
 
 #game-board {
@@ -18,7 +18,7 @@ h1 {
     border: 2px solid gray;
     border-radius: 3px;
     margin: 2px;
-    font-size: 26pt;
+    font-size: 1.5rem;
     height: 3rem;
     width: 3rem;
     display: flex;
@@ -31,7 +31,7 @@ h1 {
     border: 2px solid gray;
     border-radius: 3px;
     margin: 2px;
-    font-size: 26pt;
+    font-size: 1.5rem;
     height: 3rem;
     width: 4.5rem;
     display: flex;
@@ -44,9 +44,9 @@ h1 {
     border: none;
     border-radius: 3px;
     margin: 2px;
-    font-size: 26pt;
+    font-size: 1.5rem;
     height: 3rem;
-    width: 1.5rem;
+    width: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,7 +57,7 @@ h1 {
     border: none;
     border-radius: 3px;
     margin: 2px;
-    font-size: 26pt;
+    font-size: 1.5rem;
     height: 3rem;
     width: 0.5rem;
     display: flex;
@@ -98,4 +98,90 @@ h1 {
     margin: 0 2px;
     cursor: pointer;
     text-transform: uppercase;
+}
+
+@media (min-width: 385px) and (max-width: 630px) {
+
+    .single-box {
+        border: 1.5px solid gray;
+        margin: 1px;
+        font-size: 1rem;
+        height: 1.75rem;
+        width: 1.75rem;
+    }
+
+    .double-box {
+        border: 1.5px solid gray;
+        margin: 1px;
+        font-size: 1rem;
+        height: 1.75rem;
+        width: 2.5rem;
+    }
+
+    .format-box {
+        border: none;
+        margin: 1px;
+        font-size: 1rem;
+        height: 1.75rem;
+        width: 0.75rem;
+    }
+    
+    .dot-box {
+        border: none;
+        margin: 1px;
+        font-size: 1rem;
+        height: 1.75rem;
+        width: 0.5rem;
+    }
+
+    .keyboard-button {
+        border: none;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 0.75rem;
+    }
+
+}
+
+@media (max-width: 385px) {
+
+    .single-box {
+        border: 1px solid gray;
+        margin: 1px;
+        font-size: 0.9rem;
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    .double-box {
+        border: 1px solid gray;
+        margin: 1px;
+        font-size: 0.9rem;
+        height: 1.5rem;
+        width: 2.25rem;
+    }
+
+    .format-box {
+        border: none;
+        margin: 1px;
+        font-size: 0.9rem;
+        height: 1.5rem;
+        width: 0.5rem;
+    }
+    
+    .dot-box {
+        border: none;
+        margin: 1px;
+        font-size: 0.9rem;
+        height: 1.5rem;
+        width: 0.25rem;
+    }
+
+    .keyboard-button {
+        border: none;
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 0.5rem;
+    }
+
 }
