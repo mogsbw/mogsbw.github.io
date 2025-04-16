@@ -12,6 +12,7 @@ let remainingGuesses = NUM_GUESSES;
 let currentGuess = [];
 let nextNum = 0;
 let rightGuessString = PRESCRIPTIONS[Math.floor(Math.random()*PRESCRIPTIONS.length)];
+let ANSWER = rightGuessString[0] + rightGuessString[1] + "." + rightGuessString[2] + "/–" + rightGuessString[3] + "." + rightGuessString[4] + "x" + rightGuessString[5] + rightGuessString[6] + rightGuessString [7];
 console.log(rightGuessString);
 
 function initBoard() {
@@ -81,7 +82,6 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
         return;
     }
 
-    // console.log(key.match(/[0-9+\-]/g))
     if (STEPS.includes(key) || key.match(/[0-9+\–]/g)) {
         insertNum(key);
     }
@@ -90,7 +90,7 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
 
 function insertNum (pressedKey) {
 
-    let row = document.getElementsByClassName("rx-row")[6 - remainingGuesses];
+    let row = document.getElementsByClassName("rx-row")[NUM_GUESSES - remainingGuesses];
 
     // stop input when all boxes filled
     if (nextNum === 13) {
@@ -137,7 +137,7 @@ function insertNum (pressedKey) {
 
 function deleteNum () {
     skipBackward();
-    let row = document.getElementsByClassName("rx-row")[6 - remainingGuesses];
+    let row = document.getElementsByClassName("rx-row")[NUM_GUESSES - remainingGuesses];
     let box = row.children[nextNum - 1];
     box.textContent = "";
     box.classList.remove("filled-box");
@@ -167,7 +167,7 @@ function skipBackward () {
 }
 
 function checkGuess () {
-    let row = document.getElementsByClassName("rx-row")[6 - remainingGuesses];
+    let row = document.getElementsByClassName("rx-row")[NUM_GUESSES - remainingGuesses];
     let guessString = '';
     let rightGuess = Array.from(rightGuessString);
     let guessIndex = 0;
@@ -195,8 +195,7 @@ function checkGuess () {
             let rightFreq = 0;
 
             let numPosition = rightGuess.indexOf(currentGuess[guessIndex]);
-            // console.log(i, numPosition, currentGuess);
-            // console.log(currentGuess[guessIndex], rightGuess[guessIndex]);
+
 
             for (let c = 0; c < 8; c++) {
                 if (currentGuess[c] === num) {
@@ -206,8 +205,7 @@ function checkGuess () {
                     rightFreq++;
                 }
             }
-            // console.log(rightGuess)
-            //console.log(guessFreq, rightFreq);
+
             if (numPosition === -1) {
                 numColour = "grey";
                 rightGuess[numPosition] = "#";
@@ -225,7 +223,6 @@ function checkGuess () {
                     }
                 }  
             }
-            // console.log(currYellow);
             let delay = 250 * guessIndex;
             setTimeout(()=> {
                 box.style.backgroundColor = numColour;
@@ -237,12 +234,10 @@ function checkGuess () {
         }
         
     }
-    // console.log(guessString, rightGuessString);
     setTimeout(afterCheck, 2200, guessString);
 }
 
 function shadeKeyBoard(num, colour, remaining) {
-    // console.log(remaining);
     for (const elem of document.getElementsByClassName("keyboard-button")) {
         if (elem.textContent === num) {
             let oldColour = elem.style.backgroundColor;
@@ -280,6 +275,8 @@ function afterCheck(guess) {
         if (remainingGuesses === 0) {
             const loseScreenOverlay = document.getElementById("lose-screen-overlay");
             loseScreenOverlay.style.display = "block";
+            const rightScriptText = document.getElementById("rightScript");
+            rightScriptText.innerHTML = ANSWER;
         }
     }
 }
