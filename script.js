@@ -90,6 +90,8 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
 
 function insertNum (pressedKey) {
 
+    let row = document.getElementsByClassName("rx-row")[6 - remainingGuesses];
+
     // stop input when all boxes filled
     if (nextNum === 13) {
         return;
@@ -117,7 +119,14 @@ function insertNum (pressedKey) {
         return;
     }
 
-    let row = document.getElementsByClassName("rx-row")[6 - remainingGuesses];
+    // stop axis inputs larger than 180
+    if ((nextNum == 11) && row.children[nextNum-1].textContent == 1 && pressedKey > 8) {
+        return;
+    }
+    if ((nextNum == 12) && row.children[nextNum-2].textContent == 1 && row.children[nextNum-1].textContent == 8 && pressedKey > 0) {
+        return;
+    }
+
     let box = row.children[nextNum];
     box.textContent = pressedKey;
     box.classList.add("filled-box");
