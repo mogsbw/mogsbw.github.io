@@ -13,13 +13,13 @@
 </head>
 <body>
     <h1>Prescriptle</h1>
-    <div id="help-pop-overlay">
+    <div class="overlay" id="help-pop-overlay">
         <div class="help-pop">
-            <button id="close-help">x</button>
+            <button class="close" id="close-help">x</button>
             <div class="help-content">
                 <p>Welcome to Prescriptle! Here's how to play:</p>
                 <p>Guess the prescription using the onscreen keyboard. This is an example of a valid guess: +5.25/–1.75x005.</p>
-                <p>The first character is either + or –. Keep in mind there can be multiple of the same number!</p>
+                <p>The first character is either + or –. Keep in mind there can be multiple of the same number and that axis must be less than (or equal to) 180!</p>
                 <p>For the wider boxes make sure to use the designated "00", "25", "50" or "75" buttons.</p>
                 <p>A green box means that the character in place. Yellow means the right character but in the wrong spot. Grey means it's wrong.</p>
                 <p>Try to guess the right prescription in 6 guesses. Good luck!</p>
@@ -27,8 +27,9 @@
         </div>
     </div>
     <button id="help-button">Help</button>
-    <div id="game-board">
 
+    <div id="game-board">
+        
     </div>
     <div id="keyboard-cont">
         <div class="first-row">
@@ -52,6 +53,25 @@
             <button class="keyboard-button">50</button>
             <button class="keyboard-button">75</button>
             <button class="keyboard-button">Enter</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="not-enough-overlay">
+        <div id="not-enough">
+            <button class="close" id="close-not-enough">x</button>
+            <p>Not enough numbers!</p>
+            <p>Fill the row before you hit enter.</p>
+        </div>
+    </div>
+    <div class="overlay" id="win-screen-overlay">
+        <div id="win-screen">
+            <p>Congratulations, you win!</p>
+        </div>
+    </div>
+    <div class="overlay" id="lose-screen-overlay">
+        <div id="lose-screen">
+            <p>Game over! You're out of guesses.</p>
+            <p>The right prescription was: </p>
         </div>
     </div>
 

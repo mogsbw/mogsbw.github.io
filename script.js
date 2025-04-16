@@ -169,7 +169,9 @@ function checkGuess () {
     }
 
     if (guessString.length != 10) {
-        alert("Not enough numbers!");
+        const notEnoughOverlay = document.getElementById("not-enough-overlay");
+        notEnoughOverlay.style.display = "block";
+        document.getElementById("close-not-enough").addEventListener("click", closeNotEnough);
         return;
     }
 
@@ -258,7 +260,8 @@ function shadeKeyBoard(num, colour, remaining) {
 
 function afterCheck(guess) {
     if (guess === rightGuessString.join("")) {
-        alert("You guessed right! Game over!");
+        const winScreenOverlay = document.getElementById("win-screen-overlay");
+        winScreenOverlay.style.display = "block";
         remainingGuesses = 0
         return
     } else {
@@ -266,8 +269,8 @@ function afterCheck(guess) {
         currentGuess = [];
         nextNum = 0;
         if (remainingGuesses === 0) {
-            alert("You've run out of guesses! Game over!")
-            alert(`The right prescription was: "${rightGuessString}"`)
+            const loseScreenOverlay = document.getElementById("lose-screen-overlay");
+            loseScreenOverlay.style.display = "block";
         }
     }
 }
@@ -288,4 +291,10 @@ function openHelp() {
     helpPopOverlay.style.display = "block";
     const helpButton = document.getElementById("help-button");
     helpButton.style.display = "none";
+}
+
+
+function closeNotEnough() {
+    const notEnoughOverlay = document.getElementById("not-enough-overlay");
+    notEnoughOverlay.style.display = "none";
 }
