@@ -13,16 +13,23 @@
 </head>
 <body>
     <h1>Prescriptle</h1>
-    <div class="help-pop">
-        <span>x</span>
-        <div class="help-content">
-            <p>Welcome to Prescriptle! Here's how to play:</p>
+    <div id="help-pop-overlay">
+        <div class="help-pop">
+            <button id="close-help">x</button>
+            <div class="help-content">
+                <p>Welcome to Prescriptle! Here's how to play:</p>
+                <p>Guess the prescription using the onscreen keyboard. This is an example of a valid guess: +5.25/–1.75x005.</p>
+                <p>The first character is either + or –. Keep in mind there can be multiple of the same number!</p>
+                <p>For the wider boxes make sure to use the designated "00", "25", "50" or "75" buttons.</p>
+                <p>A green box means that the character in place. Yellow means the right character but in the wrong spot. Grey means it's wrong.</p>
+                <p>Try to guess the right prescription in 6 guesses. Good luck!</p>
+            </div>
         </div>
     </div>
+    <button id="help-button">Help</button>
     <div id="game-board">
 
     </div>
-
     <div id="keyboard-cont">
         <div class="first-row">
             <button class="keyboard-button">1</button>

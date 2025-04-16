@@ -272,8 +272,20 @@ function afterCheck(guess) {
     }
 }
 
-// document.getElementsByClassName("help-pop").addEventListener("click", (e) => {
+document.getElementById("close-help").addEventListener("click", closeHelp);
 
+function closeHelp() {
+    const helpPopOverlay = document.getElementById("help-pop-overlay");
+    helpPopOverlay.style.display = "none";
+    const helpButton = document.getElementById("help-button");
+    helpButton.style.display = "block";
+}
 
+document.getElementById("help-button").addEventListener("click", openHelp);
 
-// })
+function openHelp() {
+    const helpPopOverlay = document.getElementById("help-pop-overlay");
+    helpPopOverlay.style.display = "block";
+    const helpButton = document.getElementById("help-button");
+    helpButton.style.display = "none";
+}
