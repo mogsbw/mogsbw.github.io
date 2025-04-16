@@ -6,6 +6,8 @@ const FORMAT_INDICES = [2, 4, 5, 7, 9];
 const SIGNS = ["–", "+"];
 const STEPS = ["00", "25", "50", "75"];
 const FIRST_AXIS = ["0", "1"];
+const YELLOW = "rgb(220, 200, 90)";
+const GREEN = "rgb(80, 180, 100)";
 let remainingGuesses = NUM_GUESSES;
 let currentGuess = [];
 let nextNum = 0;
@@ -65,15 +67,11 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
     }
     let key = target.textContent;
 
-    if (key === "Del") {
-        key = "Backspace";
-    }
-
     if (remainingGuesses === 0) {
         return;
     }
 
-    if (key === "Backspace" && nextNum !== 0) {
+    if (key === "Del" && nextNum !== 0) {
         deleteNum();
         return;
     }
@@ -88,7 +86,6 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
         insertNum(key);
     }
 
-    //document.dispatchEvent(new KeyboardEvent("keyup", {'key': key}))
 })
 
 function insertNum (pressedKey) {
@@ -165,6 +162,7 @@ function checkGuess () {
     let guessString = '';
     let rightGuess = Array.from(rightGuessString);
     let guessIndex = 0;
+    const currYellow = {};
 
     for (const val of currentGuess) {
         guessString += val;
@@ -184,7 +182,6 @@ function checkGuess () {
             let num = currentGuess[guessIndex];
             let guessFreq = 0;
             let rightFreq = 0;
-            let anyLeft = true;
 
             let numPosition = rightGuess.indexOf(currentGuess[guessIndex]);
             // console.log(i, numPosition, currentGuess);
@@ -198,57 +195,57 @@ function checkGuess () {
                     rightFreq++;
                 }
             }
-            console.log(rightGuess)
-            console.log(guessFreq, rightFreq);
+            // console.log(rightGuess)
+            //console.log(guessFreq, rightFreq);
             if (numPosition === -1) {
                 numColour = "grey";
                 rightGuess[numPosition] = "#";
             } else {
                 if (currentGuess[guessIndex] === rightGuessString[guessIndex]) {
-                    numColour = "#50b464" // green
+                    numColour = GREEN;
                     rightGuess[numPosition] = "#";
-                    if (rightGuess.indexOf(currentGuess[guessIndex] === -1)) {
-                        anyLeft = false;
-                    }
                 } else {
                     if (currentGuess[numPosition] === rightGuess[numPosition] && guessFreq > rightFreq) {
                         numColour = "grey";
                     } else {
-                        numColour = "#dcc85a" // yellow
+                        numColour = YELLOW;
                         rightGuess[numPosition] = "#";
+                        currYellow[num] = 1; // flag that there are still yellows remaining
                     }
-                }
-                   
+                }  
             }
+            // console.log(currYellow);
             let delay = 250 * guessIndex;
             setTimeout(()=> {
                 box.style.backgroundColor = numColour;
                 box.style.color = "#ffffff";
-                shadeKeyBoard(num, numColour, anyLeft);
+                shadeKeyBoard(num, numColour, currYellow[num]);
             }, delay)
             currentGuess[guessIndex] = "#" // current guess letter has been accounted
             guessIndex++;
         }
         
     }
-    console.log(guessString, rightGuessString);
-    setTimeout(afterCheck, 2250, guessString);
-}
-
-function count(val) {
-    
+    // console.log(guessString, rightGuessString);
+    setTimeout(afterCheck, 2200, guessString);
 }
 
 function shadeKeyBoard(num, colour, remaining) {
+    // console.log(remaining);
     for (const elem of document.getElementsByClassName("keyboard-button")) {
         if (elem.textContent === num) {
-            let oldColour = elem.style.backgroundColor
-            if (oldColour === 'rgb(220, 200, 90)' && remaining) {
-                return;
-            } else if (oldColour === 'rgb(80, 180, 100)') {
-                if (colour === "#dcc85a") {
+            let oldColour = elem.style.backgroundColor;
+            if (oldColour === GREEN) { // if keyboard already green
+                if (colour === YELLOW) { // change if subsequent guess is yellow
+                    elem.style.backgroundColor = colour; 
+                } else { // no change if already green or from green to grey
+                    return; 
+                }
+            } else if (oldColour === YELLOW) { // if keyboard already yellow
+                if (colour === GREEN && remaining != 1) { // change to green if no more yellows
                     elem.style.backgroundColor = colour;
-                } else {
+                }
+                if (colour === "grey") { // no change from yellow to grey
                     return;
                 }
             } else {
@@ -274,3 +271,9 @@ function afterCheck(guess) {
         }
     }
 }
+
+// document.getElementsByClassName("help-pop").addEventListener("click", (e) => {
+
+
+
+// })
